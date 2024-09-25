@@ -26,8 +26,15 @@ const FoodsList = ({ foods }: Props) => {
     nome: '',
     descricao: '',
     porcao: '',
-    preco: 0
+    preco: ''
   })
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
   return (
     <>
       <FoodsListContainer>
@@ -40,7 +47,7 @@ const FoodsList = ({ foods }: Props) => {
                 descricao: food.descricao,
                 nome: food.nome,
                 porcao: food.porcao,
-                preco: food.preco
+                preco: formataPreco(food.preco)
               })
             }}
             description={food.descricao}
@@ -62,9 +69,9 @@ const FoodsList = ({ foods }: Props) => {
             <span>{modalData.porcao}</span>
             <Button
               type="button"
-              title={`Adicionar ao carrinho R$${modalData.preco}`}
+              title={`Adicionar ao carrinho ${modalData.preco}`}
             >
-              Adicionar ao carrinho - R$
+              {`Adicionar ao carrinho ${modalData.preco}`}
             </Button>
           </InfoContainer>
         </ModalContentContainer>
