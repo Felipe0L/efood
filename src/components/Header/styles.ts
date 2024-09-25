@@ -5,7 +5,6 @@ import { cores } from '../../styles'
 
 export const HeaderContainer = styled.header`
   height: 162px;
-  max-width: 1366px;
   width: 100%;
   margin: 0 auto;
   background-image: url(${fundo});

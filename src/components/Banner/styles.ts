@@ -5,7 +5,7 @@ export const BannerContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  max-width: 1366px;
+  width: 100%;
   height: 280px;
   margin: 0 auto;
   font-size: 32px;
