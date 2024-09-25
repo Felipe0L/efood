@@ -6,7 +6,8 @@ import {
   RestaurantDescription,
   RestaurantName,
   Infos,
-  Container
+  Container,
+  RestaurantImg
 } from './styles'
 import Button from '../components/Button'
 
@@ -14,27 +15,44 @@ type Props = {
   name: string
   avaliation: string
   image: string
-  infos: string[]
+  infos: string
   description: string
+  destacado?: boolean
+  id: number
 }
 
-const Restaurant = ({ name, avaliation, image, infos, description }: Props) => (
-  <RestaurantContainer>
-    <img src={image} alt={name} />
-    <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-    </Infos>
-    <Container>
-      <RestaurantName>{name}</RestaurantName>
-      <Avaliation>{avaliation}</Avaliation>
-    </Container>
-    <RestaurantDescription>{description}</RestaurantDescription>
-    <Button type="link" title="Saiba mais" to="/perfil">
-      Saiba mais
-    </Button>
-  </RestaurantContainer>
-)
+const Restaurant = ({
+  name,
+  avaliation,
+  image,
+  infos,
+  description,
+  destacado,
+  id
+}: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 250) {
+      return descricao.slice(0, 247) + '...'
+    }
+    return descricao
+  }
+  return (
+    <RestaurantContainer>
+      <RestaurantImg src={image} alt={name} />
+      <Infos>
+        {destacado && <Tag>Destaque do dia</Tag>}
+        <Tag key={id}>{infos}</Tag>
+      </Infos>
+      <Container>
+        <RestaurantName>{name}</RestaurantName>
+        <Avaliation>{avaliation}</Avaliation>
+      </Container>
+      <RestaurantDescription>{getDescricao(description)}</RestaurantDescription>
+      <Button type="link" title="Saiba mais" to={`perfil/${id}`}>
+        Saiba mais
+      </Button>
+    </RestaurantContainer>
+  )
+}
 
 export default Restaurant

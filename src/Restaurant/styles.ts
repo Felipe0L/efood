@@ -13,7 +13,6 @@ export const RestaurantContainer = styled.div`
   border-color: ${cores.salmao};
   background-color: ${cores.branco};
 
-
   ${TagContainer} {
     margin-left: 8px;
   }
@@ -24,6 +23,13 @@ export const RestaurantContainer = styled.div`
   }
 }
 `
+export const RestaurantImg = styled.img`
+  display: block;
+  width: 100%;
+  height: 217px;
+  object-fit: cover;
+`
+
 export const RestaurantName = styled.h3`
   color: ${cores.salmao};
   font-size: 18px;
@@ -32,7 +38,7 @@ export const RestaurantName = styled.h3`
 export const RestaurantDescription = styled.p`
   color: ${cores.salmao};
   font-size: 14px;
-  line-height: 22px;
+  line-height: 20px;
   padding-left: 8px;
   padding-right: 8px;
   padding-bottom: 16px;

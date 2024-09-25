@@ -6,7 +6,6 @@ export const HeroContainer = styled.header`
   background-image: url(${fundo});
   background-color: ${cores.salmaoClaro};
   height: 384px;
-  max-width: 1366px;
   width: 100%;
   margin: 0 auto;
   padding-top: 64px;

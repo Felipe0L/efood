@@ -17,6 +17,10 @@ export const FoodContainer = styled.div`
 `
 export const FoodImg = styled.img`
   margin: 8px;
+  display: block;
+  width: 304px;
+  height: 167px;
+  object-fit: cover;
 `
 export const FoodTitle = styled.h3`
   margin-left: 8px;
