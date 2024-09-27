@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { Restaurant as Foods } from '../../pages/Home'
+import { Restaurant as Foods, Order } from '../../pages/Home'
 import Food from '../Food'
 import {
   FoodsListContainer,
@@ -15,26 +16,44 @@ import {
 import close from '../../assets/images/close.png'
 import Button from '../Button'
 
+import { add, open } from '../../store/reducers/cart'
+
 export type Props = {
   foods: Foods
+  order: Order
 }
 
-const FoodsList = ({ foods }: Props) => {
+export const formataPreco = (preco: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
+const FoodsList = ({ foods, order }: Props) => {
   const [modalEstaAberta, setModalEstaAberta] = useState(false)
   const [modalData, setModalData] = useState({
     foto: '',
     nome: '',
     descricao: '',
     porcao: '',
-    preco: ''
+    preco: 0,
+    id: 0
   })
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
 
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    order = {
+      id: modalData.id,
+      image: modalData.foto,
+      name: modalData.nome,
+      price: modalData.preco
+    }
+
+    dispatch(add(order))
+    setModalEstaAberta(false)
+    dispatch(open())
+  }
   return (
     <>
       <FoodsListContainer>
@@ -47,7 +66,8 @@ const FoodsList = ({ foods }: Props) => {
                 descricao: food.descricao,
                 nome: food.nome,
                 porcao: food.porcao,
-                preco: formataPreco(food.preco)
+                preco: food.preco,
+                id: food.id
               })
             }}
             description={food.descricao}
@@ -66,15 +86,20 @@ const FoodsList = ({ foods }: Props) => {
           <InfoContainer>
             <h3>{modalData.nome}</h3>
             <p>{modalData.descricao}</p>
-            <span>{modalData.porcao}</span>
+            <span>Serve de {modalData.porcao}</span>
             <Button
+              onClick={addToCart}
               type="button"
-              title={`Adicionar ao carrinho ${modalData.preco}`}
+              title={`Adicionar ao carrinho ${formataPreco(modalData.preco)}`}
             >
-              {`Adicionar ao carrinho ${modalData.preco}`}
+              {`Adicionar ao carrinho ${formataPreco(modalData.preco)}`}
             </Button>
           </InfoContainer>
         </ModalContentContainer>
+        <div
+          onClick={() => setModalEstaAberta(false)}
+          className="overlay"
+        ></div>
       </Modal>
     </>
   )

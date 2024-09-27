@@ -22,10 +22,11 @@ export const LinkRestaurantes = styled(Link)`
   text-decoration: none;
   color: ${cores.salmao};
 `
-export const ContadorProduto = styled.div`
+export const CartButton = styled.div`
   margin-bottom: 80px;
   margin-top: 61px;
   margin-right: 169px;
+  cursor: pointer;
 `
 export const LogoHeader = styled.img`
   width: 125px;
