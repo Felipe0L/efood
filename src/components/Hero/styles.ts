@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import fundo from '../../assets/images/fundo.png'
 
 export const HeroContainer = styled.header`
@@ -21,4 +21,8 @@ export const HeroTitle = styled.h2`
   font-weight: bolder;
   text-align: center;
   margin-top: 136px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-top: 80px;
+  }
 `

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
+import { FoodContainer } from '../Food/styles'
 
 export const FoodsListContainer = styled.section`
   max-width: 1024px;
@@ -9,6 +10,20 @@ export const FoodsListContainer = styled.section`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
   margin: 56px auto 120px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 90%;
+
+    ${FoodContainer} {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    max-width: 80%;
+  }
 `
 export const Modal = styled.div`
   position: fixed;
@@ -42,6 +57,12 @@ export const ModalContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    max-width: 90%;
+    height: 480px;
+    display: block;
+  }
 `
 export const CloseButton = styled.img`
   position: absolute;
@@ -53,6 +74,12 @@ export const FoodImg = styled.img`
   height: 280px;
   display: block;
   object-fit: cover;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 232px;
+    height: 194px;
+    margin: 0 auto;
+  }
 `
 export const InfoContainer = styled.div`
   margin-top: 32px;
@@ -78,6 +105,29 @@ export const InfoContainer = styled.div`
 
   ${ButtonContainer} {
     width: 218px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin: 0 auto;
+    h3 {
+      font-size: 14px;
+      margin: 0 auto;
+    }
+
+    p,
+    span {
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+    }
+
+    span {
+      margin-top: 2px;
+    }
+    ${ButtonContainer} {
+      width: 98%;
+      margin: 0 auto;
+    }
   }
 `
 export const FoodImgContainer = styled.div`

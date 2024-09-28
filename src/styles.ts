@@ -7,6 +7,12 @@ export const cores = {
   brancoOpaco: '#FFF8F2'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '769px',
+  mobile: '376px'
+}
+
 export const GlobalCss = createGlobalStyle`
   * {
     margin: 0;
@@ -20,4 +26,6 @@ export const GlobalCss = createGlobalStyle`
     background-color: ${cores.brancoOpaco};
     color: ${cores.salmao}
   }
+
+
 `

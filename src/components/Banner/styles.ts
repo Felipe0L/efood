@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const BannerContainer = styled.div`
   background-repeat: no-repeat;
@@ -17,10 +17,19 @@ export const TituloBanner = styled.h2`
   margin-top: 156.5px;
   margin-bottom: 32px;
   margin-left: 170px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 8px;
+    margin-top: 100px;
+  }
 `
 export const TipoRestaurante = styled.h3`
   font-weight: 100;
   line-height: 38px;
   padding-top: 24px;
   margin-left: 170px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 8px;
+  }
 `

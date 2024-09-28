@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 import lixeira from '../../assets/images/lixeira.png'
 
@@ -37,6 +37,10 @@ export const Sidebar = styled.aside`
     max-width: 100%;
     width: 100%;
     margin-top: 16px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    max-width: 70%;
   }
 `
 export const PricesContainer = styled.div`
