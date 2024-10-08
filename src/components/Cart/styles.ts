@@ -3,6 +3,10 @@ import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 import lixeira from '../../assets/images/lixeira.png'
 
+type inputGroupProps = {
+  maxwidth?: string
+}
+
 export const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -26,7 +30,7 @@ export const CartContainer = styled.div`
     display: flex;
   }
 `
-export const Sidebar = styled.aside`
+export const Sidebar = styled.form`
   background-color: ${cores.salmao};
   z-index: 1;
   padding: 16px 8px 0 8px;
@@ -89,4 +93,55 @@ export const CartItem = styled.li`
   div {
     padding-left: 8px;
   }
+`
+export const DeliverDataContainer = styled.div`
+  .margin-bottom {
+    margin-bottom: 16px;
+  }
+
+  ${ButtonContainer} {
+    margin-top: 8px;
+  }
+`
+
+export const InputGroup = styled.div<inputGroupProps>`
+  max-width: ${(props) => props.maxwidth || 'auto'};
+
+  input {
+    display: block;
+    width: 100%;
+    border: 1px solid transparent;
+    padding: 8px;
+    margin: 8px 0;
+    background-color: ${cores.salmaoClaro};
+    font-size: 14px;
+    font-weight: bold;
+
+    &.error {
+      border: 3px solid red;
+    }
+  }
+
+  label {
+    font-size: 14px;
+  }
+`
+export const InputGroupContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+  }
+`
+export const PaymentDataContainer = styled.div`
+  ${ButtonContainer} {
+    margin-top: 8px;
+  }
+`
+export const ConfirmationP = styled.p`
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 24px;
 `

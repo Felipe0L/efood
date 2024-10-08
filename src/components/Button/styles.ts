@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { cores } from '../../styles'
 
 export const ButtonContainer = styled.button`
+  cursor: pointer;
   font-size: 14px;
   line-height: 16px;
   font-weight: bold;
